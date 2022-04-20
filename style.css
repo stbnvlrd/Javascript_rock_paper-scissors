@@ -8,6 +8,10 @@ body{
 
 .form{
     color: #bcbcbc;
-    font-size: 28px;   
+    font-size: 28px; 
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
 
 }
