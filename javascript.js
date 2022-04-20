@@ -1,17 +1,25 @@
-const guessRock = document.querySelector('.guessRock');
+//Button selection
+const guessRock = document.querySelector('.guessRock');   
 const guessPaper = document.querySelector('.guessPaper');
 const guessScissor = document.querySelector('.guessScissor');
-const guessField = document.querySelector('.guessField');
+
+// Paragraph output selection
 const choices = document.querySelector('.choices');
 const lastRound = document.querySelector('.lastRound');
 const winResult = document.querySelector('.winResult');
 const lostResult = document.querySelector('.lostResult');
+
+// Variables
 var playerSelect = '';
 var winning = 0;
 var losses = 0;
 var sum = 0;
-// var computerSelection = '';
 
+
+//Function that selects a random integer number between 1 and 3, choicing one option for each
+// 1 = Rock
+// 2 = Paper
+// 3 = Scissors
 function computerPlay(){
   let randomNumber = Math.floor(Math.random()*3) + 1;
   let computerSelect = '';
@@ -21,27 +29,12 @@ function computerPlay(){
     computerSelect = 'Paper'
   } else if(randomNumber === 3) {
     computerSelect = 'Scissor'
-  } else {
-    window.alert("Computer select is outside of range");
-  }
-  console.log(computerSelect);
+  } 
   return computerSelect
 }
 
-// function playerChoice(userSelect){
-//   if(userSelect.toLowerCase() === 'rock') {
-//     playerSelect = 'Rock';
-//   } else if(userSelect.toLowerCase() === 'paper') {
-//     playerSelect = 'Paper';
-//   } else if(userSelect.toLowerCase() === 'scissor') {
-//     playerSelect = 'Scissor';
-//   } else {
-//     window.alert("Player selected unknown option, Rock is choose by defalut");
-//     playerSelect = 'Rock';
-//   }
-//   console.log(playerSelect);
-// }
-
+//Function that compare the result of the choice of the computer with the player's
+//Show the choice of both, and determine the winner
 function playRound(playerSelection, computerSelection) {
   console.log(playerSelection);
   console.log(computerSelection);
@@ -65,6 +58,7 @@ function playRound(playerSelection, computerSelection) {
   lostResult.textContent = messageText;
 }
 
+//Function that choice Rock from the player
 function checkRock() {
 
   const userSelect = 'Rock';
@@ -74,6 +68,7 @@ function checkRock() {
   playRound(userSelect, computerSelection);
 }
 
+//Function that choice Paper from the player
 function checkPaper() {
 
   const userSelect = 'Paper';
@@ -83,6 +78,7 @@ function checkPaper() {
   playRound(userSelect, computerSelection);
 }
 
+//Function that choice Scissor from the player
 function checkScissor() {
 
   const userSelect = 'Scissor';
@@ -92,6 +88,7 @@ function checkScissor() {
   playRound(userSelect, computerSelection);
 }
 
+//Event Listeners for the buttons
 guessRock.addEventListener('click', checkRock);
 guessPaper.addEventListener('click', checkPaper);
 guessScissor.addEventListener('click', checkScissor);
