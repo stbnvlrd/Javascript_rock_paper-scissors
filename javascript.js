@@ -2,6 +2,9 @@
 const guessRock = document.querySelector('.guessRock');   
 const guessPaper = document.querySelector('.guessPaper');
 const guessScissor = document.querySelector('.guessScissor');
+const buttonRestart = document.querySelector('.buttonRestart');
+
+document.getElementById("buttonRestart").style.visibility = "hidden";
 
 // Paragraph output selection
 const choices = document.querySelector('.choices');
@@ -36,7 +39,6 @@ function computerPlay(){
 //Function that compare the result of the choice of the computer with the player's
 //Show the choice of both, and determine the winner
 function playRound(playerSelection, computerSelection) {
-  console.log(playerSelection);
   console.log(computerSelection);
   sum = sum + 1;
   var messageText = "Computer select " + computerSelection + " and you selected " + playerSelection;
@@ -56,8 +58,31 @@ function playRound(playerSelection, computerSelection) {
   winResult.textContent = messageText;
   messageText = "Lossing: " + losses;
   lostResult.textContent = messageText;
+  console.log(sum);
 }
 
+//Function
+
+function checkSum() {
+  if (sum === 5){
+    console.log("checkSum");
+    if (winning < losses){
+      messageText = "You lose the game, better luck next time.";
+    } else if (winning > losses) {
+      messageText = "You win the game, congratulations!";
+    } else {
+      messageText = "Wow, it was a tie, that was grueling!";
+    }
+    choices.textContent = messageText;
+    lastRound.textContent = "";
+    document.getElementById("guessRock").style.visibility = "hidden";
+    document.getElementById("guessPaper").style.visibility = "hidden";
+    document.getElementById("guessScissor").style.visibility = "hidden";
+    
+    document.getElementById("buttonRestart").style.visibility = "visible";
+  
+  }
+}
 //Function that choice Rock from the player
 function checkRock() {
 
@@ -66,6 +91,7 @@ function checkRock() {
   computerSelection = computerPlay();
   // playerChoice(userSelect);
   playRound(userSelect, computerSelection);
+  checkSum();
 }
 
 //Function that choice Paper from the player
@@ -76,6 +102,7 @@ function checkPaper() {
   computerSelection = computerPlay();
   // playerChoice(userSelect);
   playRound(userSelect, computerSelection);
+  checkSum();
 }
 
 //Function that choice Scissor from the player
@@ -86,12 +113,30 @@ function checkScissor() {
   computerSelection = computerPlay();
   // playerChoice(userSelect);
   playRound(userSelect, computerSelection);
+  checkSum();
+}
+
+function restart(){
+  document.getElementById("guessRock").style.visibility = "visible";
+  document.getElementById("guessPaper").style.visibility = "visible";
+  document.getElementById("guessScissor").style.visibility = "visible";
+  document.getElementById("buttonRestart").style.visibility = "hidden";
+  sum = 0;
+  winning = 0;
+  losses = 0;
+  playerSelect = "";
+
+  choices.textContent = "";
+  lastRound.textContent = "";
+  winResult.textContent = "";
+  lostResult.textContent = "";
 }
 
 //Event Listeners for the buttons
 guessRock.addEventListener('click', checkRock);
 guessPaper.addEventListener('click', checkPaper);
 guessScissor.addEventListener('click', checkScissor);
+buttonRestart.addEventListener('click', restart);
 
 
 
