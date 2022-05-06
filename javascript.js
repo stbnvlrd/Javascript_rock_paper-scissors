@@ -64,7 +64,7 @@ function playRound(playerSelection, computerSelection) {
 //Function
 
 function checkSum() {
-  if (sum === 5){
+  if (winning === 5 || losses === 5){
     console.log("checkSum");
     if (winning < losses){
       messageText = "You lose the game, better luck next time.";
