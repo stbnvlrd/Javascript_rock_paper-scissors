@@ -7,11 +7,49 @@ body{
 }
 
 .form{
-    color: #bcbcbc;
+    color: rgb(192, 182, 46);
     font-size: 28px; 
     align-items: center;
     justify-items: center;
     display: flex;
     flex-direction: column;
 
+}
+
+input {
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: none;
+    border-style: none;
+    background-color: white;
+    width: 400px;
+    height: 200px;
+}
+
+input:hover{
+    background-color: rgb(192, 182, 46);
+}
+ 
+.guessRock {
+    background: url(img/rock.png) no-repeat;
+    color: white;
+}
+
+.guessPaper {
+    background: url(img/paper.png) no-repeat;
+    color: gray;
+}
+
+.guessScissor {
+    background: url(img/scissor.png) no-repeat;
+    color: black;
+}
+
+.buttonRestart {
+    width: 100px;
+    height: 50px;
+}
+
+.guessDiv{
+    margin-top: 50px;
 }
